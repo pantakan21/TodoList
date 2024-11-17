@@ -1,0 +1,118 @@
+.todo-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 100px 200px;
+    gap: 10px;
+}
+
+.todo-list h1 {
+    font-size: 5vw;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.button-filter {
+    display: flex;
+    justify-content: end;
+}
+
+.button-filter .add-task {
+    border-radius: 10px;
+    padding: 20px 35px;
+    font-size: 25px;
+}
+
+.button-filter .filter-task {
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 20px;
+    font-size: 25px;
+}
+
+.button-filter .add-task {
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.774);
+}
+
+.container {
+    background-color: rgb(136, 135, 135);
+    padding: 0 25px;
+    border-radius: 25px;
+}
+
+.single-task {
+    padding: 40px;
+    margin: 25px 0;
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+    justify-content: start;
+    align-items: center;
+}
+
+.single-task .completed {
+    text-decoration: line-through;
+    color: rgb(136, 135, 135);
+}
+
+.single-task .check-icon {
+    width: 10%;
+    display: flex;
+    align-items: center;
+}
+
+.check-icon .check-icon-none {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    /* background-color: rgb(136, 135, 135); */
+}
+
+.check-icon .check-icon-success {
+    width: 50px;
+    height: 50px;
+    color: rgb(136, 135, 135);
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.single-task p {
+    width: 80%;
+    font-size: 40px;
+}
+
+.single-task .edit-delete {
+    font-size: 50px;
+    display: flex;
+    gap: 20px;
+    width: 10%
+}
+
+.edit-delete .delete-icon, .edit-delete .edit-icon {
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.low {
+    background-color: #98FB98;
+}
+
+.medium {
+    background-color: #FFA500;
+}
+
+.high {
+    background-color: #FF4500;
+}
+
+.delete-icon:hover {
+    transform: scale(1.1);
+}
+
+.edit-icon:hover {
+    transform: scale(1.1);
+}
