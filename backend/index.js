@@ -1,8 +1,11 @@
 import express from "express";
-import {PORT, mongoDBURL} from "./config.js";
+// import {PORT, mongoDBURL} from "./config.js";
 import mongoose from "mongoose";
 import todosRoute from "./routes/todosRoute.js";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -10,12 +13,7 @@ const app = express();
 app.use(express.json());
 
 // Middleware for handling CORS POLICY
-// app.use(cors());
-app.use(cors(
-    {
-        origin: ["htt"]
-    }
-))
+app.use(cors());
 
 app.get("/", (request, response) => {
     console.log(request);
@@ -25,11 +23,11 @@ app.get("/", (request, response) => {
 app.use("/todos", todosRoute);
 
 mongoose
-    .connect(mongoDBURL)
+    .connect(process.env.DATABASE_URL)
     .then(() => {
         console.log("Connected to database");
-        app.listen(PORT, () => {
-            console.log(`App is listening to port : ${PORT}`);
+        app.listen(process.env.PORT, () => {
+            console.log(`App is listening to port : ${process.env.PORT}`);
         });
     })
     .catch((error) => {
