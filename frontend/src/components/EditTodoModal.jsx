@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import {useSnackbar} from "notistack"
 import {AiOutlineClose } from "react-icons/ai"
+import {apiUrl} from "../config/config"
 
 const EditTodoModal = ({onClose, todoId}) => {
     const [title, setTitle] = useState("");
@@ -12,7 +13,7 @@ const EditTodoModal = ({onClose, todoId}) => {
     const {enqueueSnackbar} = useSnackbar();
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/todos/${todoId}`)
+        axios.get(`${apiUrl}/todos/${todoId}`)
             .then((response) => {
                 setTitle(response.data.title);
                 setDescription(response.data.description);
@@ -35,7 +36,7 @@ const EditTodoModal = ({onClose, todoId}) => {
         };
 
         axios
-            .patch(`http://localhost:8080/todos/${todoId}`, data)
+            .patch(`${apiUrl}/todos/${todoId}`, data)
             .then(() => {
                 enqueueSnackbar("Todo Edited Successfully", {variant: "success"});
                 onClose();

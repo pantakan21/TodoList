@@ -3,6 +3,7 @@ import axios from 'axios'
 import {useSnackbar} from "notistack"
 import "./CreateTodoModal.css"
 import {AiOutlineClose } from "react-icons/ai"
+import {apiUrl} from "../config/config"
 
 const CreateTodoModal = ({onClose}) => {
     const [title, setTitle] = useState("");
@@ -22,7 +23,7 @@ const CreateTodoModal = ({onClose}) => {
         };
 
         axios
-            .post("http://localhost:8080/todos", data)
+            .post(`${apiUrl}/todos`, data)
             .then(() => {
                 enqueueSnackbar("Todo Created Successfully", {variant: "success"});
                 onClose();

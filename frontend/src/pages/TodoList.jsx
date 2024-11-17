@@ -8,6 +8,7 @@ import CreateTodoModal from '../components/CreateTodoModal';
 import DeleteTodoModal from '../components/DeleteTodoModal';
 import EditTodoModal from '../components/EditTodoModal';
 import { useSnackbar } from 'notistack'
+import {apiUrl} from "../config/config"
 
 const TodoList = () => {
     const [todos, setTodos] = useState([]);
@@ -19,7 +20,8 @@ const TodoList = () => {
 
     const fetchTodos = () => {
         axios
-            .get("http://localhost:8080/todos")
+            // .get("http://localhost:8080/todos")
+            .get(`${apiUrl}/todos`)
             .then((response) => {
                 setTodos(response.data.data);
             })
@@ -47,7 +49,7 @@ const TodoList = () => {
             status: currentStatus === "completed" ? "in progress" : "completed"
         };
     
-        axios.patch(`http://localhost:8080/todos/${todoId}`, data)
+        axios.patch(`${apiUrl}/todos/${todoId}`, data)
             .then(() => {
                 enqueueSnackbar("Change Todo Status Successfully", { variant: "success" });
                 fetchTodos();

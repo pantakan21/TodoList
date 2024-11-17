@@ -3,13 +3,14 @@ import axios from 'axios'
 import { useSnackbar } from 'notistack'
 import {AiOutlineClose} from "react-icons/ai"
 import "./DeleteTodoModal.css"
+import {apiUrl} from "../config/config"
 
 const DeleteTodoModal = ({onClose, todoId}) => {
     const {enqueueSnackbar} = useSnackbar();
 
     const handleDeleteTodo = () => {
         axios
-            .delete(`http://localhost:8080/todos/${todoId}`)
+            .delete(`${apiUrl}/todos/${todoId}`)
             .then(() => {
                 enqueueSnackbar("Todo Deleted Successfully", {variant: "success"});
                 onClose();
