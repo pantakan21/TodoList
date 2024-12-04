@@ -23,7 +23,8 @@ const CreateTodoModal = ({onClose}) => {
         };
 
         axios
-            .post(`${apiUrl}/todos`, data)
+            .post(`http://localhost:8080/todos`, data)
+            // .post(`${apiUrl}/todos`, data)
             .then(() => {
                 enqueueSnackbar("Todo Created Successfully", {variant: "success"});
                 onClose();

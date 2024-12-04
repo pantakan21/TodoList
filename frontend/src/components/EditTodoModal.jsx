@@ -13,7 +13,8 @@ const EditTodoModal = ({onClose, todoId}) => {
     const {enqueueSnackbar} = useSnackbar();
 
     useEffect(() => {
-        axios.get(`${apiUrl}/todos/${todoId}`)
+        // axios.get(`${apiUrl}/todos/${todoId}`)
+        axios.get(`http://localhost:8080/todos/${todoId}`)
             .then((response) => {
                 setTitle(response.data.title);
                 setDescription(response.data.description);
@@ -36,7 +37,7 @@ const EditTodoModal = ({onClose, todoId}) => {
         };
 
         axios
-            .patch(`${apiUrl}/todos/${todoId}`, data)
+            .patch(`http://localhost:8080/todos/${todoId}`, data)
             .then(() => {
                 enqueueSnackbar("Todo Edited Successfully", {variant: "success"});
                 onClose();

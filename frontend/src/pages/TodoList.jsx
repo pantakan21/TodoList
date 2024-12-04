@@ -20,8 +20,8 @@ const TodoList = () => {
 
     const fetchTodos = () => {
         axios
-            // .get("http://localhost:8080/todos")
-            .get(`${apiUrl}/todos`)
+            .get("http://localhost:8080/todos")
+            // .get(`${apiUrl}/todos`)
             .then((response) => {
                 setTodos(response.data.data);
             })
